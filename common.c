@@ -65,10 +65,15 @@ void send_data_to_pid(pid_t id, char *message)
     }
 }
 
-int send_data_realtime(pid_t id)
+/// @brief send data from one to other
+/// @param id the destination id TO
+/// @param fid the sender id SENDER
+/// @return
+int send_data_realtime(pid_t id, pid_t sid)
 {
     char buffer[BUFFER_SIZE];
     int num_bytes_read;
+    char *message; // message to be sent
 
     while (1)
     {
@@ -91,7 +96,9 @@ int send_data_realtime(pid_t id)
         // Write input to stdout
         write(STDOUT_FILENO, "You entered: ", 13);
         write(STDOUT_FILENO, buffer, num_bytes_read);
-        send_data_to_pid(id, buffer);
+        message = ft_strjoin(ft_itoa(id), buffer);
+        message = ft_strjoin(message, ft_itoa(sid));
+        send_data_to_pid(id, message);
 
         // Clear buffer
         for (int i = 0; i < BUFFER_SIZE; i++)
@@ -102,3 +109,17 @@ int send_data_realtime(pid_t id)
 
     return 0;
 }
+/*
+/// @brief Join 2 strings with delimiter
+/// @param str1 char[] address
+/// @param str2 char[] adress
+/// @param dlm delimiter
+/// @return
+char *deljoiner(char dlm, char *str1, char *str2)
+{
+    char *str;
+    str = ft_strjoin(str1, dlm);
+    ft_strjoin(str, str2);
+    return str;
+}
+*/
