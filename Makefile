@@ -2,8 +2,7 @@ NAME	= minitalk
 SERVER	= server
 CLIENT	= client
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
-RM		= rm -f
+CFLAGS	= -g -Wall -Wextra -Werror
 
 all: $(NAME)
 

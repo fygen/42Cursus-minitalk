@@ -1,11 +1,12 @@
 #include "minitalk.h"
 
+
 /// @brief server main function
-/// @param 
-/// @return 
+/// @param
+/// @return
 int	main(void)
 {
-	pid_t	server_id;
+	pid_t server_id;
 
 	server_id = getpid();
 	ft_putpid(server_id);
@@ -17,4 +18,3 @@ int	main(void)
 	}
 	return (0);
 }
-	
